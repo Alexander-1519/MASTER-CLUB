@@ -1,0 +1,36 @@
+@import "src/assets/shared";
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  @include shared;
+  padding: 15px 100px;
+  height: 35px;
+  &__signin {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    height: 31px;
+    width: 75px;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 19px;
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.06);
+    cursor: pointer;
+    transition: 200ms;
+  }
+  &__signin:hover {
+       background: rgba(0, 0, 0, .2);
+  }
+
+  &__icon {
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    cursor: pointer;
+  }
+}
