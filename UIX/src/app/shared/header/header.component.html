@@ -1,6 +1,9 @@
 <header class="header">
   <span class="header__icon">ICON</span>
-  <span class="header__signin" (click)="openModalWithAuth()">ВХОД</span>
+  <div>
+    <span class="header__signup header__buttons" (click)="openModalForRegistration()">Вход</span>
+    <span class="header__signin header__buttons" (click)="openModalForRegistration()">Регистрация</span>
+  </div>
 </header>
 
 <ng-template masterRef></ng-template>

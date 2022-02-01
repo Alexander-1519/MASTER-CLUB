@@ -1,0 +1,46 @@
+@import "src/assets/shared";
+
+.registration {
+
+  &> form {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+  &__input {
+    height: 30px;
+    border-radius: 6px;
+    border: 1px solid #c1b6b6;
+    width: 78%;
+  }
+  &__submit {
+
+    margin-top: 30px;
+    color: white;
+  }
+
+  &__titles {
+    @include font;
+    color: black;
+  }
+  &__error {
+    @include font;
+    color: red;
+    font-size: 12px;
+  }
+}
+
+.example-right-align {
+  text-align: right;
+}
+
+input.example-right-align::-webkit-outer-spin-button,
+input.example-right-align::-webkit-inner-spin-button {
+  display: none;
+}
+
+input.example-right-align {
+  -moz-appearance: textfield;
+}
+
+

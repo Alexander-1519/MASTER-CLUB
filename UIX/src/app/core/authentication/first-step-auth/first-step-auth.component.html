@@ -1,0 +1,19 @@
+<div class="registration">
+
+    <mat-label class="registration__titles">Электронная почта:</mat-label>
+    <input class="registration__input" matInput placeholder="Электронная почта" [formControl]="email" (click)="removeError()" required>
+    <mat-error  class="registration__error "*ngIf="email.invalid && isNextStep">{{getErrorMessage()}}</mat-error>
+
+  <div class="registration__roles" (click)="chooseRole($event)">
+    <span [ngClass]="{'registration__chosen': chosen}" class="registration__role registration__client">Клиент</span>
+    <span [ngClass]="{'registration__chosen': !chosen}" class="registration__role registration__master">Мастер</span>
+  </div>
+  <button mat-flat-button color="primary" class="registration__button" (click)="nextStep()">Далее</button>
+
+  <div class="registration__text-container">
+    <span class="registration__text">
+      Уже зарегестрированы? Тогда кликайте сюда:
+    </span >
+      <span class="registration__text-signin" > Войти </span>
+  </div>
+</div>

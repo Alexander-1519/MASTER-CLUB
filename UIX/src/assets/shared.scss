@@ -3,3 +3,11 @@
   margin: 0 auto;
   padding: 0 100px;
 }
+
+@mixin font {
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 19px;
+}

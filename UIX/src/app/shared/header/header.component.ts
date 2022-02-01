@@ -16,7 +16,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  openModalWithAuth() {
+  openModalForRegistration() {
     const modalFactory = this.resolver.resolveComponentFactory(AuthenticationComponent);
     if(!this.refDir.containerRef.get(0)) {
       this.refDir.containerRef.clear();
@@ -24,6 +24,7 @@ export class HeaderComponent implements OnInit {
       component.instance.title = 'dddd'
       component.instance.close.subscribe(()=>{
         setTimeout(()=>this.refDir.containerRef.clear(),500)
+        component.destroy()
       })
     }
   }

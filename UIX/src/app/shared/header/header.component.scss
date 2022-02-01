@@ -4,27 +4,26 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  @include shared;
+  background-color: #181b28;
   padding: 15px 100px;
   height: 35px;
-  &__signin {
+  &__buttons{
+    @include font;
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    height: 31px;
-    width: 75px;
-    font-family: 'Roboto', sans-serif;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 14px;
     line-height: 19px;
     border-radius: 8px;
-    background: rgba(0, 0, 0, 0.06);
+    background: #3f51b5;
     cursor: pointer;
     transition: 200ms;
+    padding: 10px;
   }
   &__signin:hover {
-       background: rgba(0, 0, 0, .2);
+       background: #3949a5;
+  }
+  &__signup {
+    margin-right: 10px;
   }
 
   &__icon {

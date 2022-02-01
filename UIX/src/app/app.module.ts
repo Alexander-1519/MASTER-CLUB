@@ -7,14 +7,24 @@ import { AuthenticationComponent } from './core/authentication/authentication.co
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from "./core/material/material.module";
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatFormFieldModule} from '@angular/material/form-field';
 import { RefDirective } from "./core/directives/ref.directive";
+import { MatInputModule } from '@angular/material/input';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FirstStepAuthComponent } from './core/authentication/first-step-auth/first-step-auth.component';
+import { SecondStepAuthComponent } from './core/authentication/second-step-auth/second-step-auth.component';
+import { ReactiveFormsModule } from "@angular/forms";
+import {MatButtonModule} from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
+
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     RefDirective,
-    AuthenticationComponent
+    AuthenticationComponent,
+    FirstStepAuthComponent,
+    SecondStepAuthComponent,
   ],
   imports: [
     BrowserModule,
@@ -22,7 +32,12 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     BrowserAnimationsModule,
     MaterialModule,
     MatDialogModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    MatButtonModule,
+    MatIconModule
   ],
   providers: [],
   entryComponents: [AuthenticationComponent],

@@ -1,0 +1,55 @@
+<div class="registration">
+  <form [formGroup]="form">
+
+    <mat-label class="registration__titles">Ваш логин:</mat-label>
+    <input matInput  class="registration__input"  formControlName="username" >
+    <div *ngIf="submitted && f['username'].errors" class="invalid-feedback">
+      <span *ngIf="f['username'].errors['required']" class="registration__error">Введите логин</span>
+      <span *ngIf="f['username'].errors['minlength']" class="registration__error">
+        Логин должен состоять минимум из 3 символов
+      </span>
+      <span *ngIf="f['username'].errors['maxlength']" class="registration__error">
+        Логин должен состоять максимум из 10 символов
+      </span>
+    </div>
+
+
+    <mat-label class="registration__titles">Введите пароль:</mat-label>
+    <div>
+      <input matInput  class="registration__input" [type]="hidePassword ? 'password' : 'text'"  formControlName="password">
+      <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePassword">
+        <mat-icon> {{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+    </div>
+
+
+    <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
+      <span *ngIf="f['password'].errors['required']" class="registration__error">Необходимо ввести пароль</span>
+      <span *ngIf="f['password'].errors['minlength']" class="registration__error">
+        Пароль должен содержать минимум 6 символов
+      </span>
+      <span *ngIf="f['password'].errors['maxlength']" class="registration__error">
+        Пароль может содержать максимум 20 символов
+      </span>
+    </div>
+
+
+      <mat-label class="registration__titles">Повторите пароль:</mat-label>
+    <div>
+      <input matInput  class="registration__input" [type]="hideConfirmPassword ? 'password' : 'text'"  formControlName="confirmPassword">
+      <button mat-icon-button matSuffix (click)="hideConfirmPassword = !hideConfirmPassword" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hideConfirmPassword">
+        <mat-icon> {{hideConfirmPassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+    </div>
+    <div *ngIf="submitted && f['confirmPassword'].errors" class="invalid-feedback">
+      <span *ngIf="f['confirmPassword'].errors['required']" class="registration__error">
+        Необходимо ввести пароль
+      </span>
+      <span *ngIf="f['confirmPassword'].errors['matching']" class="registration__error">
+        Пароли не совпадают
+      </span>
+    </div>
+
+    <button mat-flat-button color="primary" (click)="onSubmit()" class="registration__submit">Регистрация</button>
+  </form>
+</div>

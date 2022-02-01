@@ -1,69 +1,16 @@
 <div [ngClass]="{ 'modal__backdrop': !isModalClose }" [@backDropDisplay] = 'state'></div>
 <div class="modal" [@modalDisplay] = "state">
   <div class="modal__header" >
+    <span class="modal__registration">Регистрация</span>
     <span class="modal__icon" (click)="closeModal()">
       <fa-icon [icon]="faTimes"></fa-icon>
     </span>
   </div>
-  <div class="cont_centrar">
-    <div class="cont_login">
-      <div class="cont_info_log_sign_up">
-        <!-- LOGIN -->
-        <div class="col_md_login">
-          <div class="cont_ba_opcitiy">
-
-            <h2>ЛОГИН</h2>
-            <button class="btn_login" (click)="cambiar_login()">ЛОГИН</button>
-          </div>
-        </div>
-        <!-- SIGNUP -->
-        <div class="col_md_sign_up">
-          <div class="cont_ba_opcitiy">
-            <h2>РЕГИСТРАЦИЯ</h2>
-            <button class="btn_sign_up" (click)="cambiar_sign_up()">ЗАРЕШАТЬСЯ</button>
-          </div>
-        </div>
-      </div>
-
-
-      <div class="cont_back_info">
-        <div class="cont_img_back_grey">
-          <img
-            src="https://pix-feed.com/wp-content/uploads/2018/03/2-16.jpg"
-            alt=""/>
-        </div>
-
-
-
-      </div>
-      <!-- Анимированные LOGIN и SIGNUP после нажатия на кнопку -->
-      <div class="cont_forms">
-        <div class="cont_img_back_">
-          <img
-            src="https://im0-tub-by.yandex.net/i?id=2e092f8be86e5c5f400e7dc9d49395c4-l&n=13"
-            alt=""/>
-        </div>
-        <div class="cont_form_login">
-          <a href="#" (click)="ocultar_login_sign_up()"> <fa-icon [icon]="faTimes"></fa-icon></a>
-          <h2>ЛОГИН</h2>
-          <input type="text" placeholder="Email"/>
-          <input type="password" placeholder="Password"/>
-          <button class="btn_login" onclick="cambiar_login()">ЛОГИН</button>
-        </div>
-
-        <div class="cont_form_sign_up">
-          <a href="#" (click)="ocultar_login_sign_up()"> <fa-icon [icon]="faTimes"></fa-icon></a>
-          <h2>РЕГИСТРАЦИЯ</h2>
-          <input type="text" placeholder="Email"/>
-          <input type="text" placeholder="User"/>
-          <input type="password" placeholder="Password"/>
-          <input type="password" placeholder="Confirm Password"/>
-          <button class="btn_sign_up" onclick="cambiar_sign_up()">ВОЙТИ</button>
-
-        </div>
-      </div>
-    </div>
+  <div class="modal__body">
+    <master-first-step-auth *ngIf="!userDataStepOne" (nextStepData)="nextStepData($event)"></master-first-step-auth>
+    <master-second-step-auth *ngIf="userDataStepOne"></master-second-step-auth>
+<!--    <button class='modal__close' mat-stroked-button (click)="closeModal()">Закрыть</button>-->
   </div>
-    <span class='modal__close' (click)="closeModal()">Закрыть</span>
+
 </div>
 
