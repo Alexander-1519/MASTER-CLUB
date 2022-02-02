@@ -1,11 +1,17 @@
 export interface dataForNewUser {
+  email?: string;
+  password?: string;
+  role?: number;
+  username?: string;
+  phoneNumber?: number;
+}
+export interface dataForNewUserStepOne {
   email: string;
-  password: string;
   role: number;
+}
+
+export interface dataForUserLogin {
   username: string;
-  phoneNumber: number;
+  password: number;
 }
-export interface dateForNewUserStepOne {
-  email: string;
-  role: number;
-}
+

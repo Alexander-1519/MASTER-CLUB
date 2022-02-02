@@ -1,19 +1,20 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
-import { dateForNewUserStepOne } from "../../../shared/interfaces";
+import { dataForNewUser } from "../../../shared/interfaces";
+import { DialogService } from "../../../core/service/dialogService/dialog-service.service";
 
 @Component({
   selector: 'master-first-step-auth',
-  templateUrl: './first-step-auth.component.html',
-  styleUrls: ['./first-step-auth.component.scss']
+  templateUrl: './first-step-sign-up.component.html',
+  styleUrls: ['./first-step-sign-up.component.scss']
 })
-export class FirstStepAuthComponent implements OnInit {
+export class FirstStepSignUpComponent implements OnInit {
 
   public email = new FormControl('', [Validators.required, Validators.email]);
   public isNextStep = false;
   public chosen = true
-  @Output() nextStepData =  new EventEmitter<dateForNewUserStepOne>()
-  constructor() { }
+  @Output() nextStepData =  new EventEmitter<dataForNewUser>()
+  constructor(private dialogService: DialogService) { }
 
   ngOnInit(): void {
   }
@@ -39,7 +40,13 @@ export class FirstStepAuthComponent implements OnInit {
   chooseRole(e: any) {
    this.chosen = e.target.classList.contains('registration__client');
   }
+
   removeError() {
     this.isNextStep = false
+  }
+
+  openSignIModal(id: string) {
+    this.dialogService.close('signup')
+    this.dialogService.open(id)
   }
 }

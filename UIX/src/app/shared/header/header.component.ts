@@ -1,8 +1,6 @@
-import { Component, ComponentFactoryResolver, OnInit, ViewChild } from '@angular/core';
-import {MatDialog} from '@angular/material/dialog';
-import { AuthenticationComponent } from "../../core/authentication/authentication.component";
-import { RefDirective } from "../../core/directives/ref.directive";
-
+import { Component, ComponentFactoryResolver, OnInit,} from '@angular/core';
+import { DialogService } from "../../core/service/dialogService/dialog-service.service";
+import { authStrings } from "../../strings/auth-strigs";
 @Component({
   selector: 'master-header',
   templateUrl: './header.component.html',
@@ -10,22 +8,16 @@ import { RefDirective } from "../../core/directives/ref.directive";
 })
 export class HeaderComponent implements OnInit {
 
-  @ViewChild(RefDirective, {static: false}) refDir!: RefDirective;
-  constructor(private resolver: ComponentFactoryResolver) { }
+  public strings = authStrings
+
+  constructor(private resolver: ComponentFactoryResolver, private dialogService: DialogService) {
+  }
 
   ngOnInit(): void {
   }
 
-  openModalForRegistration() {
-    const modalFactory = this.resolver.resolveComponentFactory(AuthenticationComponent);
-    if(!this.refDir.containerRef.get(0)) {
-      this.refDir.containerRef.clear();
-      const component = this.refDir.containerRef.createComponent(modalFactory);
-      component.instance.title = 'dddd'
-      component.instance.close.subscribe(()=>{
-        setTimeout(()=>this.refDir.containerRef.clear(),500)
-        component.destroy()
-      })
-    }
+  openModal(id: string) {
+    this.dialogService.open(id);
   }
+
 }

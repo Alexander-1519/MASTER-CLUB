@@ -1,4 +1,4 @@
-@import "src/assets/shared";
+@import "../../../../assets/shared";
 
 .registration {
 
@@ -11,10 +11,18 @@
     height: 30px;
     border-radius: 6px;
     border: 1px solid #c1b6b6;
-    width: 78%;
+    width: 97%;
+    margin-bottom: 10px;
+  }
+  &__password-show {
+    position: absolute;
+    right: 0;
+    bottom: 6px;
+  }
+  &__input-container {
+    position: relative;
   }
   &__submit {
-
     margin-top: 30px;
     color: white;
   }
@@ -22,6 +30,7 @@
   &__titles {
     @include font;
     color: black;
+    margin-bottom: 5px;
   }
   &__error {
     @include font;
@@ -30,17 +39,5 @@
   }
 }
 
-.example-right-align {
-  text-align: right;
-}
-
-input.example-right-align::-webkit-outer-spin-button,
-input.example-right-align::-webkit-inner-spin-button {
-  display: none;
-}
-
-input.example-right-align {
-  -moz-appearance: textfield;
-}
 
 

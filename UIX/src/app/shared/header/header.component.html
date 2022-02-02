@@ -1,9 +1,17 @@
 <header class="header">
   <span class="header__icon">ICON</span>
   <div>
-    <span class="header__signup header__buttons" (click)="openModalForRegistration()">Вход</span>
-    <span class="header__signin header__buttons" (click)="openModalForRegistration()">Регистрация</span>
+    <span class="header__signup header__buttons" (click)="openModal('signin')">Вход</span>
+    <span class="header__signin header__buttons" (click)="openModal('signup')">Регистрация</span>
   </div>
 </header>
 
-<ng-template masterRef></ng-template>
+<master-modal id="signup" [title]="strings.registration">
+  <master-sign-up ></master-sign-up>
+</master-modal>
+
+<master-modal  id="signin"
+               [title]="strings.signin">
+  <master-sign-in></master-sign-in>
+</master-modal>
+

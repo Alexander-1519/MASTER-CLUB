@@ -15,9 +15,9 @@
 
 
     <mat-label class="registration__titles">Введите пароль:</mat-label>
-    <div>
-      <input matInput  class="registration__input" [type]="hidePassword ? 'password' : 'text'"  formControlName="password">
-      <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePassword">
+    <div class="registration__input-container">
+      <input matInput  class="registration__input " [type]="hidePassword ? 'password' : 'text'"  formControlName="password">
+      <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePassword" class="registration__password-show">
         <mat-icon> {{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
       </button>
     </div>
@@ -34,10 +34,10 @@
     </div>
 
 
-      <mat-label class="registration__titles">Повторите пароль:</mat-label>
-    <div>
+    <mat-label class="registration__titles">Повторите пароль:</mat-label>
+    <div class="registration__input-container">
       <input matInput  class="registration__input" [type]="hideConfirmPassword ? 'password' : 'text'"  formControlName="confirmPassword">
-      <button mat-icon-button matSuffix (click)="hideConfirmPassword = !hideConfirmPassword" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hideConfirmPassword">
+      <button mat-icon-button matSuffix (click)="hideConfirmPassword = !hideConfirmPassword" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hideConfirmPassword" class="registration__password-show">
         <mat-icon> {{hideConfirmPassword ? 'visibility_off' : 'visibility'}}</mat-icon>
       </button>
     </div>
@@ -50,6 +50,6 @@
       </span>
     </div>
 
-    <button mat-flat-button color="primary" (click)="onSubmit()" class="registration__submit">Регистрация</button>
+    <button mat-flat-button color="primary" (click)="onSubmit()" class="registration__submit">{{strings.registration}}</button>
   </form>
 </div>

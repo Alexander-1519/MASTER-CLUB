@@ -1,0 +1,13 @@
+<div [ngClass]="{ 'modal__backdrop': true}"></div>
+
+<div class="modal">
+  <div class="modal__header">
+    <span class="modal__registration">{{title}}</span>
+    <span class="modal__icon" (click)="close()">
+      <fa-icon [icon]="faTimes"></fa-icon>
+    </span>
+  </div>
+  <div class="modal__body">
+    <ng-content></ng-content>
+  </div>
+</div>

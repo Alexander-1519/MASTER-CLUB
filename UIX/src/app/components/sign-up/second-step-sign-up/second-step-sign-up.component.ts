@@ -1,29 +1,32 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import {
   AbstractControl,
   FormBuilder,
   FormControl,
   FormGroup,
-  ValidationErrors,
   ValidatorFn,
   Validators
 } from "@angular/forms";
+import { dataForNewUser } from "../../../shared/interfaces";
+import { authStrings } from "../../../strings/auth-strigs";
 
 @Component({
   selector: 'master-second-step-auth',
-  templateUrl: './second-step-auth.component.html',
-  styleUrls: ['./second-step-auth.component.scss']
+  templateUrl: './second-step-sign-up.component.html',
+  styleUrls: ['./second-step-sign-up.component.scss']
 })
-export class SecondStepAuthComponent implements OnInit {
+export class SecondStepSignUpComponent implements OnInit {
 
   get f(): { [key: string]: AbstractControl } {
     return this.form.controls;
   }
 
-
   constructor( private fb: FormBuilder) { }
-  submitted = false;
-  form: FormGroup = new FormGroup({
+
+  public strings = authStrings
+  public  submitted = false;
+
+  public form: FormGroup = new FormGroup({
     username: new FormControl(''),
     password: new FormControl(''),
     confirmPassword: new FormControl(''),
@@ -31,6 +34,8 @@ export class SecondStepAuthComponent implements OnInit {
 
   public hidePassword = true;
   public hideConfirmPassword = true;
+
+  @Output() registration =  new EventEmitter<dataForNewUser>()
 
   ngOnInit(): void {
     this.form = this.fb.group({
@@ -45,15 +50,15 @@ export class SecondStepAuthComponent implements OnInit {
     this.form.valueChanges.subscribe(()=> this.submitted = false)
   }
 
-
-
   onSubmit(): void {
     this.submitted = true;
     if (this.form.invalid) {
       return;
     }
-
-    console.log(JSON.stringify(this.form.value, null, 2));
+    this.registration.emit({
+      password: this.form.value.password,
+      username: this.form.value.username,
+    })
   }
 
 }
