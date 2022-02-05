@@ -29,8 +29,5 @@ export class DialogService{
     let modal: any = this.modals.filter(x => x.id === id)[0];
     modal.close();
   }
-  createComponentForModal(component: any) {
-
-  }
 }
 

@@ -13,6 +13,20 @@
       </span>
     </div>
 
+    <mat-label class="registration__titles">Номер телефона</mat-label>
+    <input matInput  class="registration__input"  formControlName="username" >
+    <div *ngIf="submitted && f['username'].errors" class="invalid-feedback">
+      <span *ngIf="f['username'].errors['required']" class="registration__error">Введите номер</span>
+      <span *ngIf="f['username'].errors['minlength']" class="registration__error">
+        Логин должен состоять минимум из 3 символов
+      </span>
+      <span *ngIf="f['username'].errors['maxlength']" class="registration__error">
+        Логин должен состоять максимум из 10 символов
+      </span>
+    </div>
+
+
+
 
     <mat-label class="registration__titles">Введите пароль:</mat-label>
     <div class="registration__input-container">

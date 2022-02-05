@@ -1,6 +1,6 @@
 import { Component, ComponentFactoryResolver, OnInit,} from '@angular/core';
-import { DialogService } from "../../core/service/dialogService/dialog-service.service";
-import { authStrings } from "../../strings/auth-strigs";
+import { DialogService } from '../../core/service/dialogService/dialog-service.service';
+import { authStrings } from '../../strings/auth-strigs';
 @Component({
   selector: 'master-header',
   templateUrl: './header.component.html',

@@ -2,12 +2,13 @@ import {
   Component,
   Input,
   OnInit,
-  ElementRef, Output, EventEmitter
+  ElementRef, Output, EventEmitter, ViewChild
 } from '@angular/core';
 import { DialogService } from "../../core/service/dialogService/dialog-service.service";
 import { animate, state, style, transition, trigger } from "@angular/animations";
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { dataForNewUser } from "../interfaces";
+import { SignInComponent } from "../../components/sign-in/sign-in.component";
 
 @Component({
   selector: 'master-modal',
@@ -41,6 +42,7 @@ export class ModalComponent implements OnInit {
   @Input() title: string = '';
   @Output() closeModal =  new EventEmitter()
 
+  @ViewChild(SignInComponent) private myComp: any;
   private readonly element: any;
   public faTimes = faTimes;
 
