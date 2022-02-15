@@ -14,7 +14,6 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.dialogService.test().subscribe(data=>console.log(data))
   }
 
   openModal(id: string) {

@@ -1,4 +1,6 @@
 export var authStrings = {
   registration: 'Регистрация',
-  signin: 'Вход'
+  signin: 'Вход',
+  master: 'MASTER',
+  user: 'USER'
 }

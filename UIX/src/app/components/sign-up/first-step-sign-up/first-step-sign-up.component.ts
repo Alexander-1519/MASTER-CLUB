@@ -2,6 +2,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import { dataForNewUser } from "../../../shared/interfaces";
 import { DialogService } from "../../../core/service/dialogService/dialog-service.service";
+import { authStrings } from "../../../strings/auth-strigs";
 
 @Component({
   selector: 'master-first-step-auth',
@@ -13,6 +14,7 @@ export class FirstStepSignUpComponent implements OnInit {
   public email = new FormControl('', [Validators.required, Validators.email]);
   public isNextStep = false;
   public chosen = true
+  public strings = authStrings
   @Output() nextStepData =  new EventEmitter<dataForNewUser>()
   constructor(private dialogService: DialogService) { }
 
@@ -32,7 +34,7 @@ export class FirstStepSignUpComponent implements OnInit {
     {
       this.nextStepData.emit({
         email: this.email.value,
-        role: +this.chosen,
+        role: this.chosen ? `${this.strings.master}`: `${this.strings.user}`,
       })
     }
   }

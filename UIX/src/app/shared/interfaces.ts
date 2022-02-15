@@ -1,7 +1,7 @@
 export interface dataForNewUser {
   email?: string;
   password?: string;
-  role?: number;
+  role?: string;
   username?: string;
   phoneNumber?: number;
 }

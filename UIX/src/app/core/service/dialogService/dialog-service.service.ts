@@ -8,25 +8,11 @@ import { Observable } from "rxjs";
 @Injectable({
   providedIn: 'root'
 })
-export class DialogService implements OnInit{
+export class DialogService{
 
   private modals: any[] = [];
 
-  constructor(public http: HttpClient) { }
-
-  ngOnInit() {
-
-  }
-
-  test(): Observable<any> {
-   return  this.http.post('http://localhost:8080/api/v1/register',{
-     username: "ryhnik4",
-     password: "23234234233",
-     email: "alexander4.rybak2020@gmail.com",
-   })
-
-  }
-
+  constructor() { }
   add(modal: any) {
     this.modals.push(modal);
   }

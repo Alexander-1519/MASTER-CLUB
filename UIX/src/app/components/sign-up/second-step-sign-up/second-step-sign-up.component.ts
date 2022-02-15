@@ -17,14 +17,12 @@ import { authStrings } from "../../../strings/auth-strigs";
 })
 export class SecondStepSignUpComponent implements OnInit {
 
-  get f(): { [key: string]: AbstractControl } {
-    return this.form.controls;
-  }
-
   constructor( private fb: FormBuilder) { }
 
   public strings = authStrings
   public  submitted = false;
+  public hidePassword = true;
+  public hideConfirmPassword = true;
 
   public form: FormGroup = new FormGroup({
     username: new FormControl(''),
@@ -32,8 +30,9 @@ export class SecondStepSignUpComponent implements OnInit {
     confirmPassword: new FormControl(''),
   });
 
-  public hidePassword = true;
-  public hideConfirmPassword = true;
+  get f(): { [key: string]: AbstractControl } {
+    return this.form.controls;
+  }
 
   @Output() registration =  new EventEmitter<dataForNewUser>()
 
