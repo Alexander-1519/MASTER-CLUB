@@ -19,9 +19,9 @@ export class DialogService implements OnInit{
   }
 
   test(): Observable<any> {
-   return  this.http.post('http://localhost:8080/api/v1/users',{
+   return  this.http.post('http://localhost:8080/api/v1/register',{
      username: "ryhnik4",
-     password: "$2a$10$fixT7t0.VhX8PReWqukUe.u46ptqpFt0TmMfqWlaBgBU3auwAqFc6",
+     password: "23234234233",
      email: "alexander4.rybak2020@gmail.com",
    })
 

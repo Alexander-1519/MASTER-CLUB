@@ -9,14 +9,14 @@ import com.ryhnik.entity.UserRole;
 import com.ryhnik.entity.UserRoleName;
 import java.util.ArrayList;
 import java.util.List;
-import javax.annotation.Generated;
+import javax.annotation.processing.Generated;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-01-27T21:29:57+0300",
+    date = "2022-02-15T13:35:15+0300",
     comments = "version: 1.4.2.Final, compiler: javac, environment: Java 17.0.2 (Oracle Corporation)"
 )
 @Component
