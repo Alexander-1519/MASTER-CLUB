@@ -18,6 +18,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import { ModalComponent } from './shared/modal/modal.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
+import { HttpClientModule } from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { SignInComponent } from './components/sign-in/sign-in.component';
     ReactiveFormsModule,
     MatInputModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    HttpClientModule
   ],
   providers: [],
   entryComponents: [SignUpComponent],
