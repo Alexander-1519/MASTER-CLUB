@@ -1,6 +1,7 @@
 import { Component, ComponentFactoryResolver, OnInit,} from '@angular/core';
 import { DialogService } from '../../core/service/dialogService/dialog-service.service';
 import { authStrings } from '../../strings/auth-strigs';
+import {AuthService} from "../../core/service/auth-service/auth-service.service";
 @Component({
   selector: 'master-header',
   templateUrl: './header.component.html',
@@ -10,7 +11,7 @@ export class HeaderComponent implements OnInit {
 
   public strings = authStrings
 
-  constructor(private resolver: ComponentFactoryResolver, private dialogService: DialogService) {
+  constructor(private dialogService: DialogService, private auth: AuthService) {
   }
 
   ngOnInit(): void {
@@ -18,6 +19,10 @@ export class HeaderComponent implements OnInit {
 
   openModal(id: string) {
     this.dialogService.open(id);
+  }
+
+  approveEmail() {
+    this.auth.approveEmail().subscribe(data=>console.log(data))
   }
 
 }

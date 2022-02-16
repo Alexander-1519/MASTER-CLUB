@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from "rxjs";
-import { HttpClient } from "@angular/common/http";
-import { dataForNewUser } from "../../../shared/interfaces";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {AuthResponse, dataForNewUser, dataForUserLogin} from "../../../shared/interfaces";
 
 @Injectable({
   providedIn: 'root'
@@ -14,15 +14,19 @@ export class AuthService {
     return  this.http.post('http://localhost:8080/api/v1/register',body)
   }
 
-  public login(): Observable<any> {
-    return  this.http.post('http://localhost:8080/api/v1/login',{
-      username: "ryhnik4",
-      password: "23234234233",
-      email: "alexander4.rybak2020@gmail.com",
-    })
+  public login(body:dataForUserLogin ): Observable<AuthResponse> {
+    return this.http.post<AuthResponse>('http://localhost:8080/api/v1/login',body)
   }
 
   public checkEmail(body: string): Observable<any> {
     return this.http.post('http://localhost:8080/api/v1/check-email',{email: body})
   }
+
+  public approveEmail() {
+    const headers = new HttpHeaders({ 'Authorization': 'Bearer ' + localStorage.getItem('token') });
+    const options = { headers: headers };
+    return this.http.post('http://localhost:8080/api/v1/approve-email', null ,options )
+
+  }
+// { headers: new HttpHeaders({'Authorization': 'Bearer_ ' + localStorage.getItem('token')}) }
 }

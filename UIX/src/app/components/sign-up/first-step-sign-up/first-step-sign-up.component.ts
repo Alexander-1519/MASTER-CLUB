@@ -27,7 +27,7 @@ export class FirstStepSignUpComponent implements OnInit {
     if (this.email.hasError('required')) {
       return 'Введите электронную почту*';
     }
-    if(this.errorMessage) {
+    if(this.errorMessage?.error.message) {
       return this.errorMessage.error.message
     }
     return this.email.hasError('email') ? 'Введена не валидная электронная почта*' : '';
