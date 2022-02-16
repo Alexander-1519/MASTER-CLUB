@@ -1,6 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
-import { dataForNewUser } from "../../../shared/interfaces";
+import { DataForNewUser } from "../../../shared/interfaces";
 import { DialogService } from "../../../core/service/dialogService/dialog-service.service";
 import { authStrings } from "../../../strings/auth-strigs";
 
@@ -15,7 +15,7 @@ export class FirstStepSignUpComponent implements OnInit {
   public isNextStep = false;
   public chosen = true
   public strings = authStrings
-  @Output() nextStepData =  new EventEmitter<dataForNewUser>()
+  @Output() nextStepData =  new EventEmitter<DataForNewUser>()
   constructor(private dialogService: DialogService) { }
 
   ngOnInit(): void {
@@ -49,6 +49,6 @@ export class FirstStepSignUpComponent implements OnInit {
 
   openSignIModal(id: string) {
     this.dialogService.close('signup')
-    this.dialogService.open(id)
+    //this.dialogService.open(id)
   }
 }

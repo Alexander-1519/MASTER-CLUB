@@ -7,8 +7,8 @@ import {
 import { DialogService } from "../../core/service/dialogService/dialog-service.service";
 import { animate, state, style, transition, trigger } from "@angular/animations";
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
-import { dataForNewUser } from "../interfaces";
 import { SignInComponent } from "../../components/sign-in/sign-in.component";
+import { DataForNewUser } from "../interfaces";
 
 @Component({
   selector: 'master-modal',
@@ -40,8 +40,8 @@ import { SignInComponent } from "../../components/sign-in/sign-in.component";
 export class ModalComponent implements OnInit {
   @Input() id: string = ''
   @Input() title: string = '';
-  @Output() closeModal =  new EventEmitter()
-
+  //@Output() closeModal =  new EventEmitter()
+  @Output() close$ =  new EventEmitter<DataForNewUser>()
   @ViewChild(SignInComponent) private myComp: any;
   private readonly element: any;
   public faTimes = faTimes;
@@ -58,9 +58,9 @@ export class ModalComponent implements OnInit {
       return;
     }
 
-    document.body.appendChild(this.element);
+    //document.body.appendChild(this.element);
 
-    modal.close()
+    // modal.close()
 
     this.element.addEventListener('click', function (e: any) {
       if (e.target.classList.contains('modal__backdrop')) {
@@ -82,6 +82,7 @@ export class ModalComponent implements OnInit {
 
   close(): void {
     this.element.style.display = 'none';
-    this.closeModal.emit()
+    this.close$.emit()
+    // this.closeModal.emit()
   }
 }

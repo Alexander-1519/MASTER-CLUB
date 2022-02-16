@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { authStrings } from "../../strings/auth-strigs";
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
 import { Validation } from "../sign-up/second-step-sign-up/second-step-sign-up.component";
-import { dataForUserLogin } from "../../shared/interfaces";
+import { DataForNewUser, dataForUserLogin, UserAuthRequest } from "../../shared/interfaces";
+import { AuthService } from "../../core/service/auth-service/auth-service.service";
+import { DialogService } from "../../core/service/dialogService/dialog-service.service";
 
 @Component({
   selector: 'master-sign-in',
@@ -14,7 +16,7 @@ export class SignInComponent implements OnInit {
   get f(): { [key: string]: AbstractControl } {
     return this.form.controls;
   }
-
+  public close$ =  new EventEmitter<DataForNewUser>()
   public strings = authStrings
   public  signin = false;
 
@@ -26,9 +28,9 @@ export class SignInComponent implements OnInit {
 
   public hidePassword = true;
 
-  public dataForSignIn?: dataForUserLogin;
+  public dataForSignIn?: UserAuthRequest;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private auth: AuthService,public dialogService: DialogService) { }
 
   ngOnInit(): void {
     this.form = this.fb.group({
@@ -38,7 +40,7 @@ export class SignInComponent implements OnInit {
     this.form.valueChanges.subscribe(()=> this.signin = false)
   }
 
-  onSignin(): void {
+  onSignIn(): void {
     this.signin = true;
     if (this.form.invalid) {
       return;
@@ -48,8 +50,15 @@ export class SignInComponent implements OnInit {
       username: this.form.value.username,
       password: this.form.value.password
     }
+    this.auth.login(this.dataForSignIn).subscribe((data: any) =>  {
+      console.log(data)
+      this.dialogService.close('signIp')
+    })
     console.log(this.dataForSignIn)
   }
 
+  close() {
+    this.close$.emit()
+  }
 
 }

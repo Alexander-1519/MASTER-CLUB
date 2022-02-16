@@ -7,7 +7,7 @@ import {
   ValidatorFn,
   Validators
 } from "@angular/forms";
-import { dataForNewUser } from "../../../shared/interfaces";
+import { DataForNewUser } from "../../../shared/interfaces";
 import { authStrings } from "../../../strings/auth-strigs";
 
 @Component({
@@ -34,7 +34,7 @@ export class SecondStepSignUpComponent implements OnInit {
     return this.form.controls;
   }
 
-  @Output() registration =  new EventEmitter<dataForNewUser>()
+  @Output() registration =  new EventEmitter<DataForNewUser>()
 
   ngOnInit(): void {
     this.form = this.fb.group({
