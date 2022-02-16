@@ -15,3 +15,10 @@ export interface dataForUserLogin {
   password: number;
 }
 
+export interface ErrorObject {
+  error: {
+    message: string;
+    code: number;
+  }
+}
+

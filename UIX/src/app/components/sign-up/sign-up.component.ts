@@ -28,7 +28,7 @@ export class SignUpComponent implements OnInit {
   dataAfterLastStep(data: dataForNewUser) {
     this.dataForNewUser = {...this.dataForNewUser, ...data }
     console.log(this.dataForNewUser)
-    this.auth.registration(this.dataForNewUser).subscribe(data=>{
+    this.auth.registration(this.dataForNewUser).subscribe((data: any)=>{
       console.log(data)
       this.dialogService.close('signup')
     })

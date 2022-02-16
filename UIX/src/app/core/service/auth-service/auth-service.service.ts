@@ -10,7 +10,7 @@ export class AuthService {
 
   constructor(public http: HttpClient) { }
 
-  public registration(body:dataForNewUser):Observable<any> {
+  public registration(body:dataForNewUser):Observable<dataForNewUser> {
     return  this.http.post('http://localhost:8080/api/v1/register',body)
   }
 
@@ -20,5 +20,9 @@ export class AuthService {
       password: "23234234233",
       email: "alexander4.rybak2020@gmail.com",
     })
+  }
+
+  public checkEmail(body: string): Observable<any> {
+    return this.http.post('http://localhost:8080/api/v1/check-email',{email: body})
   }
 }
