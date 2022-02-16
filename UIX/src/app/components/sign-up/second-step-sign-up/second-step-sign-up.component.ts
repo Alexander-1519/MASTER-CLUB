@@ -38,7 +38,7 @@ export class SecondStepSignUpComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.fb.group({
-      username: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(10)]],
+      username: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(25)]],
       phone: ['', [Validators.required]],
       password: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(20)]],
       confirmPassword: ['', Validators.required],

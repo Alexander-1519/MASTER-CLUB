@@ -3,6 +3,7 @@
     <mat-label class="registration__titles">Электронная почта:</mat-label>
     <input class="registration__input" matInput placeholder="Электронная почта" [formControl]="email" (click)="removeError()" required>
     <mat-error  class="registration__error "*ngIf="email.invalid && isNextStep">{{getErrorMessage()}}</mat-error>
+    <mat-error  class="registration__error "*ngIf="errorMessage && isNextStep">{{getErrorMessage()}}</mat-error>
 
   <div class="registration__roles" (click)="chooseRole($event)">
     <span [ngClass]="{'registration__chosen': chosen}" class="registration__role registration__client">Клиент</span>
