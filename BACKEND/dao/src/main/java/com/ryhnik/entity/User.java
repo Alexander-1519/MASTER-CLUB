@@ -39,24 +39,19 @@ public class User extends BaseAuditableEntity {
     @Column(name = "image_url")
     private String imageUrl;
 
+    @Column(nullable = false)
+    private Boolean isMaster;
+
     @OneToMany
     private List<Master> masters;
 
     private Boolean approved;
 
-    public void addMaster(Master master){
-        if(masters == null){
+    public void addMaster(Master master) {
+        if (masters == null) {
             masters = new ArrayList<>();
         }
         masters.add(master);
-    }
-
-    public List<Master> getMaster() {
-        return masters;
-    }
-
-    public void setMaster(List<Master> master) {
-        this.masters = master;
     }
 
     public String getFirstName() {
@@ -129,6 +124,14 @@ public class User extends BaseAuditableEntity {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+    }
+
+    public Boolean getMaster() {
+        return isMaster;
+    }
+
+    public void setMaster(Boolean master) {
+        isMaster = master;
     }
 
     public List<Master> getMasters() {
