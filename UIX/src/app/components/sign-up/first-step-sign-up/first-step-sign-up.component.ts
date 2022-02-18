@@ -27,7 +27,7 @@ export class FirstStepSignUpComponent implements OnInit {
     if (this.email.hasError('required')) {
       return 'Введите электронную почту*';
     }
-    if(this.errorMessage) {
+    if(this.errorMessage?.error.message) {
       return this.errorMessage.error.message
     }
     return this.email.hasError('email') ? 'Введена не валидная электронная почта*' : '';
@@ -38,7 +38,6 @@ export class FirstStepSignUpComponent implements OnInit {
     if(!this.email.hasError('required') && !this.email.hasError('email'))
     {
       this.auth.checkEmail(this.email.value).subscribe((data)=> {
-        console.log(data)
         this.nextStepData.emit({
           email: this.email.value,
           role: this.chosen ? `${this.strings.master}`: `${this.strings.user}`,

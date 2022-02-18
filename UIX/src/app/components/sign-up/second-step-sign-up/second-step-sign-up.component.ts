@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {
   AbstractControl,
   FormBuilder,
@@ -35,6 +35,7 @@ export class SecondStepSignUpComponent implements OnInit {
   }
 
   @Output() registration =  new EventEmitter<dataForNewUser>()
+  @Input() showError: string = '';
 
   ngOnInit(): void {
     this.form = this.fb.group({

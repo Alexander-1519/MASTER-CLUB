@@ -22,3 +22,7 @@ export interface ErrorObject {
   }
 }
 
+export interface AuthResponse {
+  role: number;
+  token: string;
+}

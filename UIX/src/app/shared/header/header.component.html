@@ -1,17 +1,25 @@
 <header class="header">
   <span class="header__icon">ICON</span>
   <div>
-    <span class="header__signup header__buttons" (click)="openModal('signin')">Вход</span>
+    <span class="header__signup header__buttons" (click)="openModal('signIn')">Вход</span>
     <span class="header__signin header__buttons" (click)="openModal('signup')">Регистрация</span>
   </div>
 </header>
+<section class="container">
+  <div *ngIf="!isMailOVerification">
+    <span  class="container__text">Вы не подтвердили свою почту, подвтердите пожалуйста!</span>
+    <span  class="container__button" (click)="approveEmail()"> КЛИКНУТЬ Для ПОДТВЕРЖДЕНИЯ</span>
+  </div>
+  <span *ngIf="isMailOVerification" class="container__text" >Проверьте свою почту и подтвердите её</span>
+
+</section>
 
 <master-modal id="signup" [title]="strings.registration">
   <master-sign-up ></master-sign-up>
 </master-modal>
 
-<master-modal  id="signin"
-               [title]="strings.signin">
+<master-modal  id="signIn"
+               [title]="strings.signIn">
   <master-sign-in></master-sign-in>
 </master-modal>
 

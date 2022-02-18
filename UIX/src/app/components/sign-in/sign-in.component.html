@@ -4,7 +4,6 @@
     <input class="signin__input"  formControlName="username" >
     <div *ngIf="signin && f['username'].errors" class="invalid-feedback">
       <span *ngIf="f['username'].errors['required']" class="signin__error">Введите логин</span>
-
     </div>
 
 
@@ -21,6 +20,6 @@
       <span *ngIf="f['password'].errors['required']" class="signin__error">Необходимо ввести пароль</span>
     </div>
 
-    <button mat-flat-button color="primary" (click)="onSignin()" class="signin__submit">{{strings.signin}}</button>
+    <button mat-flat-button color="primary" (click)="onSignIn()" class="signin__submit">{{strings.signIn}}</button>
   </form>
 </div>

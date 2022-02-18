@@ -1,2 +1,2 @@
 <master-first-step-auth *ngIf="!dataForNewUser" (nextStepData)="dataAfterFirstStep($event)"></master-first-step-auth>
-<master-second-step-auth *ngIf="dataForNewUser" (registration)="dataAfterLastStep($event)"></master-second-step-auth>
+<master-second-step-auth *ngIf="dataForNewUser" (registration)="dataAfterLastStep($event)" [showError]="errorText"></master-second-step-auth>
