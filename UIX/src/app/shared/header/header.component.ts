@@ -9,7 +9,8 @@ import {AuthService} from "../../core/service/auth-service/auth-service.service"
 })
 export class HeaderComponent implements OnInit {
 
-  public strings = authStrings
+  public strings = authStrings;
+  public isMailOVerification: boolean = false
 
   constructor(private dialogService: DialogService, private auth: AuthService) {
   }
@@ -22,7 +23,9 @@ export class HeaderComponent implements OnInit {
   }
 
   approveEmail() {
-    this.auth.approveEmail().subscribe(data=>console.log(data))
+    this.auth.approveEmail().subscribe(data=>{
+    this.isMailOVerification = true
+    })
   }
 
 }

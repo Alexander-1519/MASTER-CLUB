@@ -1,7 +1,7 @@
 import { Component, Input, OnInit, Output,EventEmitter } from '@angular/core';
 
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
-import { dataForNewUser } from "../../shared/interfaces";
+import {dataForNewUser, ErrorObject} from "../../shared/interfaces";
 import { AuthService} from "../../core/service/auth-service/auth-service.service";
 import { DialogService } from "../../core/service/dialogService/dialog-service.service";
 
@@ -15,6 +15,7 @@ export class SignUpComponent implements OnInit {
   public state: string = 'start';
   public isModalClose: boolean = false;
   public dataForNewUser?: dataForNewUser;
+  public errorText = '';
 
   @Output() close = new EventEmitter<void>();
   constructor(public auth: AuthService, public dialogService: DialogService) { }
@@ -27,10 +28,8 @@ export class SignUpComponent implements OnInit {
 
   dataAfterLastStep(data: dataForNewUser) {
     this.dataForNewUser = {...this.dataForNewUser, ...data }
-    console.log(this.dataForNewUser)
     this.auth.registration(this.dataForNewUser).subscribe((data: any)=>{
-      console.log(data)
       this.dialogService.close('signup')
-    })
+    },(error: ErrorObject) => this.errorText = error.error.message)
   }
 }

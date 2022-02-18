@@ -5,6 +5,7 @@ import { dataForUserLogin } from "../../shared/interfaces";
 import {AuthService} from "../../core/service/auth-service/auth-service.service";
 import {role} from "../../strings/role";
 import {DialogService} from "../../core/service/dialogService/dialog-service.service";
+import {switchMap} from "rxjs/operators";
 
 @Component({
   selector: 'master-sign-in',
@@ -50,10 +51,14 @@ export class SignInComponent implements OnInit {
       username: this.form.value.username,
       password: this.form.value.password
     }
-    this.auth.login(this.dataForSignIn).subscribe(data=>{
+    this.auth.login(this.dataForSignIn).
+    pipe(switchMap(data => {
       localStorage.setItem('token',`${data.token}`)
       this.dialogService.close('signIn')
-    },(error => console.log(error)))
+      return this.auth.getUserinfo()
+    }))
+      .subscribe(data=>{ console.log(data)},
+        (error => console.log(error)))
 
     console.log(this.dataForSignIn)
   }

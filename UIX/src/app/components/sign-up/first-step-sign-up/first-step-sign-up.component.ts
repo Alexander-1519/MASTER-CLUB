@@ -38,7 +38,6 @@ export class FirstStepSignUpComponent implements OnInit {
     if(!this.email.hasError('required') && !this.email.hasError('email'))
     {
       this.auth.checkEmail(this.email.value).subscribe((data)=> {
-        console.log(data)
         this.nextStepData.emit({
           email: this.email.value,
           role: this.chosen ? `${this.strings.master}`: `${this.strings.user}`,

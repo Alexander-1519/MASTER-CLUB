@@ -6,8 +6,12 @@
   </div>
 </header>
 <section class="container">
-  <span class="container__text">Вы не подтвердили свою почту, подвтердите пожалуйста!</span>
-  <span  class="container__button" (click)="approveEmail()"> КЛИКНУТЬ Для ПОДТВЕРЖДЕНИЯ</span>
+  <div *ngIf="!isMailOVerification">
+    <span  class="container__text">Вы не подтвердили свою почту, подвтердите пожалуйста!</span>
+    <span  class="container__button" (click)="approveEmail()"> КЛИКНУТЬ Для ПОДТВЕРЖДЕНИЯ</span>
+  </div>
+  <span *ngIf="isMailOVerification" class="container__text" >Проверьте свою почту и подтвердите её</span>
+
 </section>
 
 <master-modal id="signup" [title]="strings.registration">

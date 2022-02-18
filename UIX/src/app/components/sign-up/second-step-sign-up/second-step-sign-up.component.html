@@ -60,4 +60,5 @@
 
     <button mat-flat-button color="primary" (click)="onSubmit()" class="registration__submit">{{strings.registration}}</button>
   </form>
+  <span *ngIf="showError" class="registration__error">{{showError}}</span>
 </div>
