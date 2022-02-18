@@ -1,0 +1,79 @@
+@import "../../../../assets/shared";
+
+.registration {
+  display: flex;
+  flex-direction: column;
+  &__button {
+    margin: 15px 0 5px 0
+  }
+  &__roles {
+  display: flex;
+
+  }
+  &__role {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 30px;
+    border: 1px solid #c1b6b6;
+    cursor: pointer;
+    color: black;
+    border-radius: 6px;
+    transition: 0.1s;
+    margin-top: 15px;
+  }
+
+  &__role:hover {
+    color: rgba(0, 0, 0, 0.6);
+  }
+  &__master {
+
+  }
+  &__client {
+    margin-right: 5px;
+  }
+  &__chosen {
+    background-color: #3f51b5;
+    color: white;
+  }
+  &__chosen:hover {
+    background-color: #3f51b5;
+    color: rgba(255, 255, 255, 0.7);
+  }
+  &__text-signin {
+    color: #3f51b5;
+    cursor: pointer;
+  }
+  &__input {
+    height: 35px;
+    border-radius: 6px;
+    border: 1px solid #c1b6b6;
+    width: 98%;
+    margin: 10px 0 0 0;
+  }
+
+  &__error {
+    @include font;
+    color: red;
+    font-size: 12px;
+  }
+  &__titles {
+    @include font;
+    color: black;
+  }
+}
+::ng-deep.mat-form-field-flex {
+  border-radius: 20px!important;
+}
+::ng-deep.mat-form-field-underline {
+  text-align: center!important;
+  width: 80%!important;
+  margin-left: 20px;
+}
+
+
+span {
+  @include font;
+  color: black;
+}

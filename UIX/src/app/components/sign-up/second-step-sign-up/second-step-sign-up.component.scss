@@ -1,0 +1,43 @@
+@import "../../../../assets/shared";
+
+.registration {
+
+  &> form {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+  &__input {
+    height: 30px;
+    border-radius: 6px;
+    border: 1px solid #c1b6b6;
+    width: 97%;
+    margin-bottom: 10px;
+  }
+  &__password-show {
+    position: absolute;
+    right: 0;
+    bottom: 6px;
+  }
+  &__input-container {
+    position: relative;
+  }
+  &__submit {
+    margin-top: 30px;
+    color: white;
+  }
+
+  &__titles {
+    @include font;
+    color: black;
+    margin-bottom: 5px;
+  }
+  &__error {
+    @include font;
+    color: red;
+    font-size: 12px;
+  }
+}
+
+
+

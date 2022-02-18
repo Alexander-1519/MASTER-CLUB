@@ -1,0 +1,25 @@
+<div class="signin">
+  <form [formGroup]="form">
+    <mat-label class="signin__titles">Ваш логин:</mat-label>
+    <input class="signin__input"  formControlName="username" >
+    <div *ngIf="signin && f['username'].errors" class="invalid-feedback">
+      <span *ngIf="f['username'].errors['required']" class="signin__error">Введите логин</span>
+    </div>
+
+
+    <mat-label class="signin__titles">Введите пароль:</mat-label>
+    <div class="signin__input-container">
+      <input matInput  class="signin__input" [type]="hidePassword ? 'password' : 'text'"  formControlName="password">
+      <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePassword" class="signin__password-show">
+        <mat-icon> {{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+    </div>
+
+
+    <div *ngIf="signin && f['password'].errors" class="invalid-feedback">
+      <span *ngIf="f['password'].errors['required']" class="signin__error">Необходимо ввести пароль</span>
+    </div>
+
+    <button mat-flat-button color="primary" (click)="onSignIn()" class="signin__submit">{{strings.signIn}}</button>
+  </form>
+</div>
