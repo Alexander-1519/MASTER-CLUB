@@ -48,7 +48,6 @@ export class FirstStepSignUpComponent implements OnInit {
   }
 
   openSignIModal(id: string) {
-    this.dialogService.close('signup')
     //this.dialogService.open(id)
   }
 }

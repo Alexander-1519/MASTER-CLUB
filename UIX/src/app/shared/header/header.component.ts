@@ -19,8 +19,9 @@ export class HeaderComponent implements OnInit {
   openModal(id: string) {
     // this.dialogService.open(id, SignInComponent);
     this.dialogService.openDialog(SignInComponent,(instance: SignInComponent, close) => {
-      instance.close$.subscribe(res => {close(true);
-      });
+      instance.close$.subscribe(res => {
+        close({ close: true });
+        console.log(111)});
     });
   }
 

@@ -52,7 +52,6 @@ export class SignInComponent implements OnInit {
     }
     this.auth.login(this.dataForSignIn).subscribe((data: any) =>  {
       console.log(data)
-      this.dialogService.close('signIp')
     })
     console.log(this.dataForSignIn)
   }
@@ -61,4 +60,7 @@ export class SignInComponent implements OnInit {
     this.close$.emit()
   }
 
+  closeModal() {
+    this.close$.emit()
+  }
 }

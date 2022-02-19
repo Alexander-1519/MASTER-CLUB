@@ -2,10 +2,9 @@ import {
   ApplicationRef,
   ComponentFactoryResolver, ComponentRef,
   EmbeddedViewRef,
-  Injectable, Injector, OnInit, Type
+  Injectable, Injector, Type
 } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
-import { Observable } from "rxjs";
+import {Modals} from "../../../shared/interfaces";
 
 
 @Injectable({
@@ -13,56 +12,34 @@ import { Observable } from "rxjs";
 })
 export class DialogService{
 
-  private modals: any[] = [];
+  private modals: Modals[] = [];
 
   constructor(private appRef: ApplicationRef,
               private componentFactoryResolver: ComponentFactoryResolver,
               private injector: Injector,) { }
-  add(modal: any) {
+
+  add(modal: Modals) {
     this.modals.push(modal);
   }
 
-  remove(id: string) {
-    this.modals = this.modals.filter(x => x.id !== id);
+  openDialog<TData,TResult>(component: Type<TData>, updater: (instance: TData, close: (res: TResult) => void) => void) {
+
+      const componentRef = this.createComponentInBody(component)
+
+      this.add({
+        dialog: componentRef,
+      })
+
+      updater(componentRef.instance, (res: TResult) => {
+        this.close(componentRef);
+      });
   }
 
-  // open<T>(id: string, component?: Type<T>) {
-  //   let modal: any = this.modals.filter(x => x.id === id)[0];
-  //   modal.open();
-  //   // @ts-ignore
-  //   const componentRef = this.createComponentInBody(component)
-  //   console.log(componentRef)
-  // }
-  // @ts-ignore
-  openDialog<TData,TResult>(component?: Type<TData>, updater: (instance: TData, close: (res: TResult) => void) => void) {
-   // let modal: any = this.modals.filter(x => x.id === id)[0];
-   // modal.open();
-    // @ts-ignore
-    const componentRef = this.createComponentInBody(component)
-    console.log(componentRef.instance)
-    this.add({
-      dialog: componentRef,
-      destroy: () => this.removeComponentFromBody(componentRef),
-    })
-    updater(componentRef.instance, (res: TResult) => {
-      this.close(componentRef.instance);
-    });
-    console.log(componentRef)
+  close<TData>(componentRef: ComponentRef<TData>) {
+    componentRef.destroy()
   }
 
-  private removeComponentFromBody<T>(componentRef: ComponentRef<T>): void {
-    if (componentRef) {
-      this.appRef.detachView(componentRef.hostView);
-      componentRef.destroy();
-    }
-  }
-
-  close(id: any) {
-    let modal: any = this.modals.filter(x => x.id === id)[0];
-    modal.close();
-  }
-
-  private createComponentInBody<T>(component: Type<T>, initializer?: (instance: T) => void): ComponentRef<T> {
+  private createComponentInBody<TData>(component: Type<TData>, initializer?: (instance: TData) => void): ComponentRef<TData> {
     // 1. Create a component reference from the component
     const componentRef = this.componentFactoryResolver.resolveComponentFactory(component).create(this.injector);
 

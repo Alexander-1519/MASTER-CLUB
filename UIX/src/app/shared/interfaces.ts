@@ -15,3 +15,6 @@ export interface dataForUserLogin {
   password: number;
 }
 
+export interface Modals {
+  dialog: any;
+}

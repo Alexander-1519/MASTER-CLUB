@@ -68,11 +68,9 @@ export class ModalComponent implements OnInit {
       }
     });
 
-    this.dialogService.add(this);
   }
 
   ngOnDestroy(): void {
-    this.dialogService.remove(this.id);
     this.element.remove();
   }
 

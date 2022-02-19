@@ -1,4 +1,5 @@
-<master-modal id="signup" [title]="strings.registration" (close$)="close()">
+<master-modal id="signup" [title]="strings.registration" >
+<!--  (close$)="close()"-->
   <div class="signin">
     <form [formGroup]="form">
       <mat-label class="signin__titles">Ваш логин:</mat-label>
@@ -24,5 +25,8 @@
 
       <button mat-flat-button color="primary" (click)="onSignIn()" class="signin__submit">{{strings.signin}}</button>
     </form>
+  </div>
+  <div>
+      <button (click)="closeModal()">ЗАРКЫТЬ</button>
   </div>
 </master-modal>

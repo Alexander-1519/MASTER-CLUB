@@ -30,7 +30,6 @@ export class SignUpComponent implements OnInit {
     console.log(this.dataForNewUser)
 
     this.auth.registration(this.dataForNewUser).subscribe((data: any)=>{
-      this.dialogService.close('signup')
     })
   }
 }
