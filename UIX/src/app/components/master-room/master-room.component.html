@@ -1,0 +1,58 @@
+<section class="master">
+  <span> Привет, {{userInfo?.username}}</span>
+  <div class="master__choose">
+    <span> {{strings.exitToMarket}}</span>
+    <div class="master__toggle">
+      <span class="master__yes" (click)="edit()">Готов!</span>
+    </div>
+  </div>
+
+  <div class="master__main">
+    <aside class="master__aside">
+      <div>
+        <div class="master__img-container">
+          <img src="">
+          <span class="master__icon">
+            <fa-icon
+            [size]="'4x'"
+            [icon]="faFileUpload"
+          ></fa-icon></span>
+        </div>
+      </div>
+      <div>
+        <span>Статистика:</span>
+      </div>
+    </aside>
+
+    <form [formGroup]="form" class="master__form">
+      <div class="master__container">
+        <span> О себе:</span>
+        <textarea *ngIf="isEmailApproved && isEdited" class="master__aboutMe" formControlName="aboutMe" placeholder="О себе..."> </textarea>
+        <span class="master__aboutMe"  *ngIf="!isEdited"> </span>
+      </div>
+
+      <div class="master__container">
+        <span> Ваши услуги:</span>
+        <span class="master__aboutMe" > </span>
+      </div>
+
+      <div class="master__container">
+        <span> Ваше расписание для работы:</span>
+        <span class="master__aboutMe" > </span>
+      </div>
+
+      <div class="master__container portfolio">
+        <span> Портфолио:</span>
+      </div>
+      <master-loading class="master__loading" *ngIf="isLoading"></master-loading>
+    </form>
+  </div>
+  <div class="master__reviews">
+    <span>
+      Отзывы:
+    </span>
+  </div>
+</section>
+
+
+

@@ -1,18 +1,30 @@
 <header class="header">
   <span class="header__icon">ICON</span>
-  <div>
+  <div *ngIf="!this.isLogin">
     <span class="header__signup header__buttons" (click)="openModal('signIn')">Вход</span>
     <span class="header__signin header__buttons" (click)="openModal('signup')">Регистрация</span>
   </div>
-</header>
-<section class="container">
-  <div *ngIf="!isMailOVerification">
-    <span  class="container__text">Вы не подтвердили свою почту, подвтердите пожалуйста!</span>
-    <span  class="container__button" (click)="approveEmail()"> КЛИКНУТЬ Для ПОДТВЕРЖДЕНИЯ</span>
+  <div *ngIf="this.isLogin" class="header__menu" >
+    <span class="header__menu-text">МЕНЮ</span>
+    <div class="header__dropdown">
+        <ul class="header__list">
+          <li class="header__list" (click)="openMastersRoom()">
+            МАСТЕРСКАЯ
+          </li>
+          <li class="header__list">ПРОФИЛЬ</li>
+          <li class="header__list">ПОМОЩЬ</li>
+        </ul>
+    </div>
   </div>
-  <span *ngIf="isMailOVerification" class="container__text" >Проверьте свою почту и подтвердите её</span>
+</header>
+<!--<section class="container">-->
+<!--  <div *ngIf="!isMailOVerification">-->
+<!--    <span  class="container__text">Вы не подтвердили свою почту, подвтердите пожалуйста!</span>-->
+<!--    <span  class="container__button" (click)="approveEmail()"> КЛИКНУТЬ Для ПОДТВЕРЖДЕНИЯ</span>-->
+<!--  </div>-->
+<!--  <span *ngIf="isMailOVerification" class="container__text" >Проверьте свою почту и подтвердите её</span>-->
 
-</section>
+<!--</section>-->
 
 <master-modal id="signup" [title]="strings.registration">
   <master-sign-up ></master-sign-up>

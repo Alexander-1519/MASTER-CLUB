@@ -1,0 +1,117 @@
+@import "src/assets/shared";
+
+.master {
+  @include shared;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 100px;
+  &__main {
+    display: flex;
+    width: 100%;
+    margin-top: 50px;
+  }
+  &__form {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-grow: 2;
+    border-radius: 10px;
+    border: 1px solid black;
+    overflow: hidden;
+  }
+  &__yes {
+    background-color: green;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-right: 10px;
+    &:hover {
+      background-color: #059a05;
+    }
+  }
+
+  &__no {
+    background-color: #9f0707;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+    &:hover {
+      background-color: #c41616;
+    }
+  }
+  &__toggle {
+    margin-top: 10px;
+  }
+  &__choose {
+    text-align: center;
+  }
+  &__aside {
+    border-radius: 10px;
+    border: 1px solid black;
+    margin-right: 5px;
+    padding: 10px;
+  }
+  &__reviews {
+    width: 100%;
+    border-radius: 10px;
+    border: 1px solid black;
+    margin-top: 10px;
+  }
+  &__aboutMe {
+    overflow: auto;
+    resize: none;
+    width: 100%;
+    height: 50px;
+    background: #f6f6f6;
+    border: 1px solid #cecece;
+    border-radius: 8px 0 0 0;
+    padding: 8px 0 8px 10px;
+    @include font;
+  }
+  &__container {
+    display: flex;
+    align-items: center;
+    width: 80%;
+    min-height: 80px;
+    justify-content: space-between;
+    margin-top: 10px;
+    &>span {
+      min-width: 160px;
+    }
+  }
+  &__container.portfolio {
+    display: flex;
+    justify-content: center;
+  }
+  &__img-container {
+    position: relative;
+    background-color: gray;
+    border-radius: 10px;
+    overflow: hidden;
+    width: 200px;
+    height: 200px;
+  }
+  &__icon {
+    position: absolute;
+    top:40%; left: 50%;
+    transform: translateX(-50%);
+    cursor: pointer;
+    color: white;
+    &:hover {
+      color: #ccc7c7;
+    }
+  }
+  &__loading {
+    @include loading
+  }
+}
+
+span {
+  @include font;
+}

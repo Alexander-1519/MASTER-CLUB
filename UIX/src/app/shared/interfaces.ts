@@ -5,6 +5,7 @@ export interface dataForNewUser {
   username?: string;
   phoneNumber?: number;
 }
+
 export interface dataForNewUserStepOne {
   email: string;
   role: number;
@@ -25,4 +26,16 @@ export interface ErrorObject {
 export interface AuthResponse {
   role: number;
   token: string;
+}
+
+export interface UserInfo {
+  id: number
+  firstName: string;
+  lastName: string;
+  username: string;
+  email: string;
+  phone: number;
+  master: boolean;
+  approved: boolean;
+  role: number
 }

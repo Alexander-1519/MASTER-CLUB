@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from "rxjs";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {AuthResponse, dataForNewUser, dataForUserLogin} from "../../../shared/interfaces";
+import {AuthResponse, dataForNewUser, dataForUserLogin, UserInfo} from "../../../shared/interfaces";
 
 @Injectable({
   providedIn: 'root'
@@ -22,10 +22,10 @@ export class AuthService {
     return this.http.post<{email: string}>('http://localhost:8080/api/v1/check-email',{email: body})
   }
 
-  public getUserinfo(): Observable<string> {
+  public getUserinfo(): Observable<UserInfo> {
     const headers = new HttpHeaders({ 'Authorization': 'Bearer ' + localStorage.getItem('token') });
     const options = { headers: headers };
-    return this.http.get<string>('http://localhost:8080/api/v1/users/current-user', options)
+    return this.http.get<UserInfo>('http://localhost:8080/api/v1/users/current-user', options)
   }
 
   public approveEmail(): Observable<null> {

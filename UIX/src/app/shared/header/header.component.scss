@@ -32,6 +32,24 @@
     font-weight: normal;
     cursor: pointer;
   }
+  &__menu-text {
+    color: white;
+    cursor: pointer;
+  }
+  &__menu {
+    position: relative;
+  }
+  &__dropdown {
+    position: absolute;
+    left: -40px;
+    background-color: black;
+    padding: 20px;
+    z-index: 100;
+  }
+  &__list {
+    margin-bottom: 5px;
+    cursor: pointer;
+  }
 }
 
 .container {
@@ -57,6 +75,9 @@
       color: red;
     }
   }
+}
 
-
+li {
+  @include font;
+  color: white;
 }

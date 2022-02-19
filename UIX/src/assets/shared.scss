@@ -11,3 +11,9 @@
   font-size: 14px;
   line-height: 19px;
 }
+
+@mixin loading {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
