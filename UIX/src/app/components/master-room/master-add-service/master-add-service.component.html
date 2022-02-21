@@ -1,0 +1,28 @@
+<master-modal (close)="closeModal()"
+              [closeOnClickOutside] = true
+              [showBackgroundMask] = true>
+
+  <master-modal-header [title]="strings.title"
+                       (close)="closeModal()">
+
+  </master-modal-header>
+  <master-modal-body>
+    <div class="body">
+      <form [formGroup]="form" class="body__form">
+        <span class="body__name" >Название услуги</span>
+        <input class="body__input" formControlName="name">
+        <span class="body__name">Стоимость услуги</span>
+        <input class="body__input" formControlName="price">
+        <span class="body__name">Описание услуги</span>
+        <textarea class="body__textarea " formControlName="description"></textarea>
+      </form>
+    </div>
+  </master-modal-body>
+
+  <master-modal-footer>
+    <button class="button"> Добавить услугу</button>
+  </master-modal-footer>
+
+</master-modal>
+
+

@@ -1,12 +1,10 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import { authStrings } from "../../strings/auth-strigs";
-import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
-import { dataForUserLogin } from "../../shared/interfaces";
+import {authStrings} from "../../strings/auth-strigs";
+import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {dataForUserLogin} from "../../shared/interfaces";
 import {AuthService} from "../../core/service/auth-service/auth-service.service";
 import {role} from "../../strings/role";
-import {DialogService} from "../../core/service/dialogService/dialog-service.service";
 import {switchMap} from "rxjs/operators";
-import {UserService} from "../../core/service/user-service/user-service.service";
 
 @Component({
   selector: 'master-sign-in',
@@ -23,7 +21,7 @@ export class SignInComponent implements OnInit {
 
   public strings = authStrings;
   public stringsRole = role;
-  public  signin = false;
+  public signin = false;
 
   public form: FormGroup = new FormGroup({
     username: new FormControl(''),
@@ -35,14 +33,15 @@ export class SignInComponent implements OnInit {
 
   public dataForSignIn?: dataForUserLogin;
 
-  constructor(private fb: FormBuilder, private auth: AuthService, private userService: UserService) { }
+  constructor(private fb: FormBuilder, private auth: AuthService) {
+  }
 
   ngOnInit(): void {
     this.form = this.fb.group({
-        username: ['', [Validators.required]],
-        password: ['', [Validators.required]],
-      })
-    this.form.valueChanges.subscribe(()=> this.signin = false)
+      username: ['', [Validators.required]],
+      password: ['', [Validators.required]],
+    })
+    this.form.valueChanges.subscribe(() => this.signin = false)
   }
 
   onSignIn(): void {
@@ -54,12 +53,11 @@ export class SignInComponent implements OnInit {
       username: this.form.value.username,
       password: this.form.value.password
     }
-    this.auth.login(this.dataForSignIn).
-    pipe(switchMap(data => {
-      localStorage.setItem('token',`${data.token}`)
+    this.auth.login(this.dataForSignIn).pipe(switchMap(data => {
+      localStorage.setItem('token', `${data.token}`)
       return this.auth.getUserinfo()
     }))
-      .subscribe(data=>{
+      .subscribe(data => {
           this.close$.emit();
         },
         (error => console.log(error)))
@@ -70,6 +68,4 @@ export class SignInComponent implements OnInit {
   closeModal() {
     this.close$.emit()
   }
-
-
 }

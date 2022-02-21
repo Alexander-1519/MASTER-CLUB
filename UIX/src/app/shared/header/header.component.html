@@ -1,5 +1,5 @@
 <header class="header">
-  <span class="header__icon">ICON</span>
+  <span class="header__icon" (click)="goToHome()">ICON</span>
   <div *ngIf="!isLogin">
     <span class="header__signup header__buttons" (click)="openSignIn()">Вход</span>
     <span class="header__signin header__buttons" (click)="openSignUp()">Регистрация</span>

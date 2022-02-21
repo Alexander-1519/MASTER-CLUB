@@ -1,5 +1,5 @@
 export var masterStrings = {
-  exitToMarket: 'Готов выйти на рынок?',
+  exitToMarket: '',
   signIn: 'Вход',
   master: 'MASTER',
   user: 'USER'

@@ -16,13 +16,10 @@ import { SecondStepSignUpComponent } from './components/sign-up/second-step-sign
 import { ReactiveFormsModule } from "@angular/forms";
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
-import { ModalBodyComponent } from './shared/modal/modal-body/modal-body.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import { HttpClientModule } from "@angular/common/http";
-import { LoadingComponent } from './shared/loading/loading.component';
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {ModalModule} from "./shared/modal/modal.module";
-import {MasterRoomModule} from "./components/master-room/master-room.module";
 import {SpinnerModule} from "./shared/loading/loading.module";
 
 @NgModule({

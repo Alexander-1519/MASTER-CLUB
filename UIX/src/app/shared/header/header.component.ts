@@ -1,11 +1,10 @@
-import {Component, OnInit,} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output,} from '@angular/core';
 import {DialogService} from '../../core/service/dialogService/dialog-service.service';
 import {authStrings} from '../../strings/auth-strigs';
 import {AuthService} from "../../core/service/auth-service/auth-service.service";
 import {Router} from "@angular/router";
 import {SignInComponent} from "../../components/sign-in/sign-in.component";
 import {SignUpComponent} from "../../components/sign-up/sign-up.component";
-import {UserService} from "../../core/service/user-service/user-service.service";
 
 @Component({
   selector: 'master-header',
@@ -17,9 +16,9 @@ export class HeaderComponent implements OnInit {
   public strings = authStrings;
   public isMailOVerification: boolean = false
   public isLogin = false;
+  //@Output() isLoading = new EventEmitter<boolean>();
 
-  constructor(private dialogService: DialogService, private auth: AuthService, private route: Router,
-              public userService: UserService) {
+  constructor(private dialogService: DialogService, private auth: AuthService, private route: Router) {
   }
 
   ngOnInit(): void {
@@ -57,6 +56,11 @@ export class HeaderComponent implements OnInit {
   close() {
     localStorage.removeItem('token');
     this.isLogin = false;
+    this.route.navigate(['/'])
+  }
+
+  goToHome() {
+    this.route.navigate(['/'])
   }
 
 }

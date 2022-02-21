@@ -22,7 +22,6 @@ import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
   ],
     exports: [
         ModalBodyComponent,
-        ModalBodyComponent,
         ModalFooterComponent,
         ModalComponent,
         ModalHeaderComponent,
