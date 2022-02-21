@@ -39,3 +39,7 @@ export interface UserInfo {
   approved: boolean;
   role: number
 }
+
+export interface Modals {
+  dialog: any;
+}

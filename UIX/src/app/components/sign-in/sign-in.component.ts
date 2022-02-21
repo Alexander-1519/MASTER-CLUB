@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import { authStrings } from "../../strings/auth-strigs";
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
 import { dataForUserLogin } from "../../shared/interfaces";
@@ -6,6 +6,7 @@ import {AuthService} from "../../core/service/auth-service/auth-service.service"
 import {role} from "../../strings/role";
 import {DialogService} from "../../core/service/dialogService/dialog-service.service";
 import {switchMap} from "rxjs/operators";
+import {UserService} from "../../core/service/user-service/user-service.service";
 
 @Component({
   selector: 'master-sign-in',
@@ -13,6 +14,8 @@ import {switchMap} from "rxjs/operators";
   styleUrls: ['./sign-in.component.scss']
 })
 export class SignInComponent implements OnInit {
+
+  @Output() close$ = new EventEmitter();
 
   get f(): { [key: string]: AbstractControl } {
     return this.form.controls;
@@ -32,7 +35,7 @@ export class SignInComponent implements OnInit {
 
   public dataForSignIn?: dataForUserLogin;
 
-  constructor(private fb: FormBuilder, private auth: AuthService, private dialogService: DialogService) { }
+  constructor(private fb: FormBuilder, private auth: AuthService, private userService: UserService) { }
 
   ngOnInit(): void {
     this.form = this.fb.group({
@@ -54,13 +57,18 @@ export class SignInComponent implements OnInit {
     this.auth.login(this.dataForSignIn).
     pipe(switchMap(data => {
       localStorage.setItem('token',`${data.token}`)
-      this.dialogService.close('signIn')
       return this.auth.getUserinfo()
     }))
-      .subscribe(data=>{ console.log(data)},
+      .subscribe(data=>{
+          this.close$.emit();
+        },
         (error => console.log(error)))
 
     console.log(this.dataForSignIn)
+  }
+
+  closeModal() {
+    this.close$.emit()
   }
 
 

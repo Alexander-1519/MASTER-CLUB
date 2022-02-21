@@ -11,10 +11,15 @@
   </div>
   <button mat-flat-button color="primary" class="registration__button" (click)="nextStep()">Далее</button>
 
-  <div class="registration__text-container">
-    <span class="registration__text">
-      Уже зарегестрированы? Тогда кликайте сюда:
-    </span >
-      <span class="registration__text-signin" (click)="openSignIModal('signin')"> Войти </span>
-  </div>
+<!--  <div class="registration__text-container">-->
+<!--    <span class="registration__text">-->
+<!--      Уже зарегестрированы? Тогда кликайте сюда:-->
+<!--    </span >-->
+<!--      <span class="registration__text-signin" (click)="openSignIModal()"> Войти </span>-->
+<!--  </div>-->
+  <master-loading *ngIf="isLoading"></master-loading>
 </div>
+
+
+
+

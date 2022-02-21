@@ -1,2 +1,14 @@
-<master-first-step-auth *ngIf="!dataForNewUser" (nextStepData)="dataAfterFirstStep($event)"></master-first-step-auth>
-<master-second-step-auth *ngIf="dataForNewUser" (registration)="dataAfterLastStep($event)" [showError]="errorText"></master-second-step-auth>
+<master-modal (close)="closeModal()"
+              [closeOnClickOutside]=true
+              [showBackgroundMask]=true
+>
+
+  <master-modal-header [title]="strings.registration"
+                       (close)="closeModal()"
+  ></master-modal-header>
+  <master-modal-body>
+    <master-first-step-auth *ngIf="!dataForNewUser" (nextStepData)="dataAfterFirstStep($event)"></master-first-step-auth>
+    <master-second-step-auth *ngIf="dataForNewUser" (registration)="dataAfterLastStep($event)"
+                             [showError]="errorText"></master-second-step-auth>
+  </master-modal-body>
+</master-modal>

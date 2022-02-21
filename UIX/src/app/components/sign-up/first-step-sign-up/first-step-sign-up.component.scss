@@ -3,6 +3,7 @@
 .registration {
   display: flex;
   flex-direction: column;
+  position: relative;
   &__button {
     margin: 15px 0 5px 0
   }

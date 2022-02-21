@@ -4,6 +4,7 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import {dataForNewUser, ErrorObject} from "../../shared/interfaces";
 import { AuthService} from "../../core/service/auth-service/auth-service.service";
 import { DialogService } from "../../core/service/dialogService/dialog-service.service";
+import {authStrings} from "../../strings/auth-strigs";
 
 @Component({
   selector: 'master-sign-up',
@@ -16,8 +17,10 @@ export class SignUpComponent implements OnInit {
   public isModalClose: boolean = false;
   public dataForNewUser?: dataForNewUser;
   public errorText = '';
+  public strings = authStrings;
 
-  @Output() close = new EventEmitter<void>();
+  @Output() close$ = new EventEmitter();
+
   constructor(public auth: AuthService, public dialogService: DialogService) { }
 
   ngOnInit(): void {}
@@ -29,7 +32,10 @@ export class SignUpComponent implements OnInit {
   dataAfterLastStep(data: dataForNewUser) {
     this.dataForNewUser = {...this.dataForNewUser, ...data }
     this.auth.registration(this.dataForNewUser).subscribe((data: any)=>{
-      this.dialogService.close('signup')
     },(error: ErrorObject) => this.errorText = error.error.message)
+  }
+
+  closeModal() {
+    this.close$.emit()
   }
 }

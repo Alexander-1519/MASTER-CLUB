@@ -1,0 +1,43 @@
+//&__close {
+//  display: inline-flex;
+//  justify-content: center;
+//  align-items: center;
+//  position: relative;
+//  height: 35px;
+//  width: 93px;
+//  color: black;
+//  @include font;
+//  font-size: 16px;
+//  line-height: 19px;
+//  border-radius: 8px;
+//  background: white;
+//  cursor: pointer;
+//  transition: 200ms;
+//  margin: 20px auto;
+//}
+.modal {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding-top: 5px;
+    text-align: right;
+    padding-bottom: 30px;
+  &__icon {
+    cursor: pointer;
+    color: black;
+    align-content: flex-start;
+  }
+  &__icon:hover {
+    color: #3b3b3b;
+  }
+
+  &__title {
+    font-family: 'Roboto', sans-serif;
+    color: black;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 19px;
+    margin: 0 auto;
+  }
+}

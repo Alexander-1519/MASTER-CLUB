@@ -8,21 +8,21 @@ import {AppModule} from "../../app.module";
 import {LoadingComponent} from "../../shared/loading/loading.component";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
+import {SpinnerModule} from "../../shared/loading/loading.module";
 
 const routes: Routes = [{ path: '', component: MasterRoomComponent }];
 
 @NgModule({
   declarations: [
     MasterRoomComponent,
-    LoadingComponent
   ],
   providers: [MasterRoomService],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
     ReactiveFormsModule,
-    MatProgressSpinnerModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    SpinnerModule
   ],
   exports: [RouterModule]
 })
