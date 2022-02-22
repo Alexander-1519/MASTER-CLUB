@@ -8,6 +8,7 @@ import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 import {SpinnerModule} from "../../shared/loading/loading.module";
 import { MasterAddServiceComponent } from './master-add-service/master-add-service.component';
 import {ModalModule} from "../../shared/modal/modal.module";
+import {IvyCarouselModule} from 'angular-responsive-carousel';
 
 const routes: Routes = [{ path: '', component: MasterRoomComponent }];
 
@@ -23,7 +24,8 @@ const routes: Routes = [{ path: '', component: MasterRoomComponent }];
     ReactiveFormsModule,
     FontAwesomeModule,
     SpinnerModule,
-    ModalModule
+    ModalModule,
+    IvyCarouselModule
   ],
   exports: [RouterModule]
 })

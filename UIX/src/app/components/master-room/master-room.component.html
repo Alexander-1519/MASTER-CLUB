@@ -53,7 +53,22 @@
 
         <div class="master__container portfolio">
           <span> Портфолио:</span>
+          <input type="file" (change)="kek($event)">
+          <carousel [images]="images"
+          [cellsToShow]=1
+          [loop]="true"
+          [overflowCellsLimit]=1
+          [dots]="true"
+          [transitionTimingFunction]="'ease-in-out'"
+          [width]="520"
+         >
+          </carousel>
         </div>
+        <div *ngIf="isEdited">
+          <button>Сохранить</button>
+          <button (click)="isEdited = !isEdited">Отменить</button>
+        </div>
+
       </form>
     </div>
     <div class="master__reviews">

@@ -16,8 +16,9 @@ export class ModalComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  handleClickOutside() {
-    if (this.closeOnClickOutside) {
+  handleClickOutside(e: any) {
+    console.log()
+    if (e.target.classList.contains('modal__container') && this.closeOnClickOutside) {
       this.doClose();
     }
   }

@@ -1,11 +1,13 @@
 <div
   class="modal-bg-overlay"
   *ngIf="showBackgroundMask"
-  (click)="handleClickOutside()"
+
 ></div>
 
+<div class="modal__container" (click)="handleClickOutside($event)">
+  <div class="modal__element">
+    <ng-content></ng-content>
+  </div>
 
-<div class="modal__element">
-  <ng-content></ng-content>
 </div>
 
