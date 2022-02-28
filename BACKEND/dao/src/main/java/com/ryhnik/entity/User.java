@@ -54,6 +54,7 @@ public class User extends BaseAuditableEntity {
 //        masters.add(master);
 //    }
 
+
     public String getFirstName() {
         return firstName;
     }
@@ -126,12 +127,8 @@ public class User extends BaseAuditableEntity {
         this.imageUrl = imageUrl;
     }
 
-    public Boolean getMaster() {
+    public Boolean getIsMaster() {
         return isMaster;
-    }
-
-    public void setMaster(Boolean master) {
-        isMaster = master;
     }
 
     public void setMaster(Master master) {
@@ -144,5 +141,13 @@ public class User extends BaseAuditableEntity {
 
     public void setApproved(Boolean approved) {
         this.approved = approved;
+    }
+
+    public void setIsMaster(Boolean master) {
+        isMaster = master;
+    }
+
+    public Master getMaster(){
+        return this.master;
     }
 }
